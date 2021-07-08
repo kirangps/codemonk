@@ -1,25 +1,93 @@
-import logo from './logo.svg';
-import './App.css';
+//for displaying single name (getting correct output)
+import React, { Component,useState } from 'react'
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+class App extends Component {
+  constructor(props){
+    super(props);
+    this.state ={value : " ",name:' '}
+this.handleChange=this.handleChange.bind(this);
+this.handleSubmit=this.handleSubmit.bind(this);
+  }
+
+handleChange(event) {
+  this.setState({value:event.target.value});
+}
+handleSubmit(event){
+  //alert(this.state.value);
+  event.preventDefault();
+  this.setState({
+  
+    name:this.state.value
+  })
+}  
+  render() {
+    return (
+      <form onSubmit={this.handleSubmit}>
+      <div className="centered">
+      <div className="header"><h1>CodeMonk Task</h1></div>
+          
+      <input type="text" value={this.state.value} onChange={this.handleChange} className="input1" placeholder="enter your text"></input>
+   
+      <h2>{this.state.name}</h2>
+      <button className="final">Submit</button>
+      </div>
+    </form>
+    )
+  }
 }
 
-export default App;
+export default App
+
+
+//for printing multiple names(followed with errors)
+//please check this code
+
+// import React, { Component,useState } from 'react'
+
+// class App extends Component {
+//   constructor(props){
+//     super(props);
+//     this.state ={value : " ",names:[]}
+// this.handleChange=this.handleChange.bind(this);
+// this.handleSubmit=this.handleSubmit.bind(this);
+//   }
+
+// handleChange(event) {
+//   this.setState({value:event.target.value});
+// }
+// handleSubmit(event){
+//   //alert(this.state.value);
+//   event.preventDefault();
+//   this.setState({
+  
+//     names:this.state.names.push(this.state.value)
+//   })
+// }  
+//   render() {
+//     return (
+//       <form onSubmit={this.handleSubmit}>
+//       <div className="centered">
+//       <div className="header"><h1>CodeMonk Task</h1></div>
+//       <ul>
+//         {
+//           this.state.names.map((name,key)=>{
+//             return (
+//               <li>name</li>
+//             )
+//           })
+//         }
+      
+//       <input type="text" value={this.state.value} onChange={this.handleChange} className="input1" placeholder="enter your text"></input>
+//       </ul>
+//       <h2>{this.state.name}</h2>
+//       <button className="final">Submit</button>
+//       </div>
+//     </form>
+//     )
+//   }
+// }
+
+// export default App
+
+
+
